@@ -20,7 +20,7 @@ contract EtherZon {
     //Creating Event
     event List(string name, uint256 cost, uint256 quantity);
 
-    //modifier
+    //Modifier
     modifier onlyOwner() {
         require(msg.sender == owner);
         _;
