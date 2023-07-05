@@ -98,4 +98,37 @@ describe("EtherZon", () => {
       expect(transaction).to.emit(etherZon, "Buy");
     });
   });
+
+  describe("Withdrawing", () => {
+    let balanceBefore;
+
+    beforeEach(async () => {
+      //Listing a item
+      let transaction = await etherZon
+        .connect(deployer)
+        .list(ID, NAME, CATEGORY, IMAGE, COST, RATING, STOCK);
+      await transaction.wait();
+
+      //Buying a item
+      transaction = await etherZon.connect(buyer).buy(ID, { value: COST });
+      await transaction.wait();
+
+      //Deployer Balance Before withdrawal
+      balanceBefore = await ethers.provider.getBalance(deployer.address);
+
+      //Withdrawing
+      transaction = await etherZon.connect(deployer).withdraw();
+      await transaction.wait();
+    });
+
+    it("Update the owner balance", async () => {
+      const balanceAfter = await ethers.provider.getBalance(deployer.address);
+      expect(balanceAfter).to.be.greaterThan(balanceBefore);
+    });
+
+    it("Update the contract Balance", async () => {
+      const result = await ethers.provider.getBalance(etherZon.balance);
+      expect(result).to.equal(0);
+    });
+  });
 });
