@@ -93,4 +93,8 @@ contract EtherZon {
     }
 
     //Withdraw Funds
+    function withdraw() public onlyOwner {
+        (bool success, ) = owner.call{value: address(this).balance}("");
+        require(success);
+    }
 }
