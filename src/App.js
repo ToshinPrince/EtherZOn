@@ -21,9 +21,12 @@ function App() {
   const [toys, setToys] = useState(null);
 
   const [account, setAccount] = useState(null);
+  const [item, setItem] = useState({});
+  const [toggle, setToggle] = useState(false);
 
-  const togglePop = async () => {
-    console.log("togglePop....");
+  const togglePop = (item) => {
+    setItem(item);
+    toggle ? setToggle(false) : setToggle(true);
   };
 
   const loadBlockchainData = async () => {
@@ -66,7 +69,6 @@ function App() {
     <div>
       <Navigation account={account} setAccount={setAccount} />
       <h2>EtherZon Top Sellers</h2>
-
       {electronics && clothing && toys && (
         <>
           <Section
@@ -82,6 +84,16 @@ function App() {
           <Section title={"Toys & Games"} items={toys} togglePop={togglePop} />
         </>
       )}
+      {toggle && (
+        <Product
+          item={item}
+          provider={provider}
+          account={account}
+          etherZon={etherZon}
+          togglePop={togglePop}
+        />
+      )}
+      ;
     </div>
   );
 }
