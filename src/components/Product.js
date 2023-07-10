@@ -93,8 +93,24 @@ const Product = ({ item, provider, account, etherZon, togglePop }) => {
             Buy Now
           </button>
 
-          <p>Ships from EtherZon</p>
-          <p>Sold by EtherZon</p>
+          <p>Ships from EtherZon.</p>
+          <p>Sold by EtherZon.</p>
+
+          {order && (
+            <div className="product_bought">
+              Item bought on <br />
+              <strong>
+                {new Date(
+                  Number(order.time.toString() + "000")
+                ).toLocaleDateString(undefined, {
+                  weekday: "long",
+                  hour: "numeric",
+                  minute: "numeric",
+                  second: "numeric",
+                })}
+              </strong>
+            </div>
+          )}
         </div>
 
         <button onClick={togglePop} className="product__close">
