@@ -93,8 +93,8 @@ const Product = ({ item, provider, account, etherZon, togglePop }) => {
             Buy Now
           </button>
 
-          <p>Ships from EtherZon</p>
-          <p>Sold by EtherZon</p>
+          <p>Ships from EtherZon.</p>
+          <p>Sold by EtherZon.</p>
 
           {order && (
             <div className="product_bought">
