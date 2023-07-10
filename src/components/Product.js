@@ -6,9 +6,45 @@ import Rating from "./Rating";
 
 import close from "../assets/close.svg";
 
-const Product = ({ item, provider, account, EtherZon, togglePop }) => {
-  // return <div className="product"></div>;
-  const buyHandler = async () => {};
+const Product = ({ item, provider, account, etherZon, togglePop }) => {
+  const [order, setOrder] = useState(null);
+  const [hasBought, setHasBought] = useState(false);
+
+  const fetchDetails = async () => {
+    const events = await etherZon.queryFilter("Buy");
+    const orders = events.filter(
+      (event) =>
+        event.args.buyer === account &&
+        event.args.itemId.toString() === item.id.toString()
+    );
+
+    if (orders.length === 0) return;
+
+    const order = await etherZon.orders(account, orders[0].args.orderId);
+    setOrder(order);
+
+    // if (orders.lenght === 0) return(
+    //   const order = await etherZon.orders(account, orders[0].args.orderId);
+    // setOrder(order);
+    // )
+  };
+
+  const buyHandler = async () => {
+    const signer = await provider.getSigner();
+
+    //Buying Item
+    let transaction = await etherZon.connect(signer).buy(item.id, {
+      value: item.cost,
+    });
+
+    await transaction.wait();
+
+    setHasBought(true);
+  };
+
+  useEffect(() => {
+    fetchDetails();
+  }, [hasBought]);
   return (
     <div className="product">
       <div className="product__details">
@@ -40,7 +76,7 @@ const Product = ({ item, provider, account, EtherZon, togglePop }) => {
             pellentesque purus faucibus blandit non vel risus.
           </p>
         </div>
-        <div className="peoduct__order">
+        <div className="product__order">
           <p>
             FREE Delivery <br />
             <strong>
