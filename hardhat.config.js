@@ -3,6 +3,7 @@ require("dotenv").config();
 
 /** @type import('hardhat/config').HardhatUserConfig */
 
+//Network Details
 const SEPOLIA_RPC_URL = process.env.ALCHEMY_SEPOLIA_RPC_URL;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
