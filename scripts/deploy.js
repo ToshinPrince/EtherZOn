@@ -4,6 +4,8 @@
 // You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
 // will compile your contracts, add the Hardhat Runtime Environment's members to the
 // global scope, and execute the script.
+//Deployed EtherZon Contract at: 0x96e10A2a50df957e9c48C9872eA56cC0448C024e
+
 const hre = require("hardhat");
 const { items } = require("../src/items.json");
 
@@ -20,7 +22,7 @@ async function main() {
   const etherZon = await EtherZon.deploy();
   await etherZon.deployed();
 
-  console.log(`Deployer EtherZon Contract at: ${etherZon.address}\n`);
+  console.log(`Deployed EtherZon Contract at: ${etherZon.address}\n`);
 
   //Listing items
   for (i = 0; i < items.length; i++) {
