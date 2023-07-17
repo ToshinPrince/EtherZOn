@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/EtherZOn/static/css/main.06406dda.css",
+    "main.js": "/EtherZOn/static/js/main.0aca5a85.js",
+    "static/js/787.1d15dcf7.chunk.js": "/EtherZOn/static/js/787.1d15dcf7.chunk.js",
+    "static/media/star-regular.svg": "/EtherZOn/static/media/star-regular.5e67908f6f7948ea0e3e881891425181.svg",
+    "index.html": "/EtherZOn/index.html",
+    "static/media/star-solid.svg": "/EtherZOn/static/media/star-solid.fd0a35dcfe096d496836511574b5a302.svg",
+    "static/media/close.svg": "/EtherZOn/static/media/close.ae469738e479d31aa952364e12120ad2.svg",
+    "main.06406dda.css.map": "/EtherZOn/static/css/main.06406dda.css.map",
+    "main.0aca5a85.js.map": "/EtherZOn/static/js/main.0aca5a85.js.map",
+    "787.1d15dcf7.chunk.js.map": "/EtherZOn/static/js/787.1d15dcf7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.06406dda.css",
+    "static/js/main.0aca5a85.js"
+  ]
+}
